@@ -1,19 +1,20 @@
-package sleepwait;
+package trycatch;
 
 public class MyClass {
-    private static Object LOCK = new Object();
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Thread.sleep(1000);
-	System.out.println("Thread''' +Thread.currentThread().getName()+'''is woken after sleeping for 1 second");
-	synchronized(LOCK)
-	{
-		LOCK.wait(1000);
-		System.out.println("object ''' + LOCK + ''' is woken after" + "waiting for 1 second");
-		
+	public static void main(String[] args) {
+		int[] array = new int[3];
+        try 
+        {
+            array[7] = 3;
+        }
+        catch (ArrayIndexOutOfBoundsException e) 
+        {
+            System.out.println("Array index is out of bounds!"); 
+        }
+        finally 
+        {
+            System.out.println("The array is of size " + array.length);
+        }
 	}
-
-	}
-
 }
